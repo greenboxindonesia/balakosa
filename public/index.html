@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="BALAKOSA — booking hotel, penginapan, cottage, dan trip dengan kalender."><title>BALAKOSA — Stay, Relax, Explore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body>
+<div id="hd"></div>
+<main>
+<section class="hero"><div class="hv" id="hc"><div id="hsl"></div><div class="hctl"><button class="harr" id="pv" aria-label="Sebelumnya">‹</button><div class="hdots" id="hdt"></div><button class="harr" id="nx" aria-label="Berikutnya">›</button></div></div></section>
+<div class="w bw"><div class="bar"><div><label>Layanan</label><select id="bs"></select></div><div><label>Tanggal</label><input type="date"></div><div><label>Tamu</label><input type="number" min="1" value="2"></div><a class="btn" id="bgo" href="booking.html">Cek Ketersediaan</a></div></div>
+
+<section class="stats" style="margin-top:44px"><div class="w g4"><div class="stat"><strong data-n="12" data-s="K+">0</strong><span>Tamu bahagia</span></div><div class="stat"><strong data-n="4.9">0</strong><span>Rating rata-rata</span></div><div class="stat"><strong data-n="48">0</strong><span>Unit kamar & cottage</span></div><div class="stat"><strong data-n="15" data-s="+">0</strong><span>Rute trip</span></div></div></section>
+
+<section class="s cr"><div class="w g2"><div class="imgblock" id="a1"></div><div><span class="eyebrow">Tentang BALAKOSA</span><h2>Liburan tanpa ribet, dari pilih tanggal sampai check-in.</h2><p class="lead">Kami memadukan akomodasi nyaman, trip terkurasi, dan proses booking yang transparan.</p><ul class="ck"><li>Cek ketersediaan langsung di kalender.</li><li>Harga jelas, tanpa biaya tersembunyi.</li><li>Konfirmasi cepat lewat WhatsApp admin.</li></ul><a class="btn" href="about.html">Kenali Kami</a></div></div></section>
+
+<section class="s"><div class="w"><div class="sh"><span class="eyebrow">Keunggulan</span><h2>Dirancang agar booking terasa mudah.</h2></div><div class="g3"><div class="card"><div class="ic">🗓</div><h3>Kalender Real-time</h3><p>Tanggal yang sudah terisi otomatis tertutup, terhubung ke Google Calendar.</p></div><div class="card"><div class="ic">💳</div><h3>Pembayaran Fleksibel</h3><p>Transfer DP atau lunas, QRIS, atau bayar di lokasi sesuai kebutuhan.</p></div><div class="card"><div class="ic">💬</div><h3>Notifikasi Instan</h3><p>Pesanan langsung masuk ke WhatsApp dan Telegram admin.</p></div></div></div></section>
+
+<section class="s cr" id="layanan"><div class="w"><div class="sh"><span class="eyebrow">Katalog Layanan</span><h2>Pilih sesuai gaya liburan Anda.</h2></div><div class="products" id="sv"></div></div></section>
+
+<section class="s"><div class="w g2"><div><span class="eyebrow">Kalkulator Estimasi</span><h2>Hitung biaya sebelum booking.</h2><p class="lead">Pilih layanan dan jumlahnya, estimasi total langsung muncul.</p></div>
+<div class="card calc"><label>Layanan<select id="cs"></select></label><label id="cl" style="margin:18px 0">Jumlah malam<input id="cq" type="number" min="1" value="2"></label><div class="row"><span>Estimasi total</span><b id="ct"></b></div><div class="row"><span>DP 30%</span><b id="cdp"></b></div><a class="btn" style="margin-top:20px" href="booking.html">Lanjut Booking</a></div></div></section>
+
+<section class="w"><div class="promo"><div><span class="eyebrow">Promo Bulan Ini</span><h2>Diskon 15% untuk booking weekday.</h2><p>Sebut kode <b>BALAKOSA15</b> saat konfirmasi via WhatsApp. Berakhir dalam:</p></div><div class="cd" id="cd"></div></div></section>
+
+<section class="s"><div class="w g2"><div><span class="eyebrow">Kenapa BALAKOSA?</span><h2>Lebih praktis dari booking biasa.</h2><p class="lead">Bandingkan sebelum memutuskan.</p><a class="btn ol" style="margin-top:24px" href="kontak.html">Tanya Tim Kami</a></div>
+<div class="cmp"><div><strong>Fitur</strong><strong>BALAKOSA</strong><strong>Biasa</strong></div><div><span>Booking via kalender</span><span class="yes">✓ Ya</span><span class="no">✕ Tidak</span></div><div><span>Konfirmasi WhatsApp</span><span class="yes">✓ Cepat</span><span>Bervariasi</span></div><div><span>Biaya layanan platform</span><span class="yes">✓ Tanpa</span><span class="no">✕ Ada</span></div><div><span>Trip & kamar satu tempat</span><span class="yes">✓ Ya</span><span>—</span></div></div></div></section>
+
+<section class="s cr"><div class="w"><div class="sh"><span class="eyebrow">Galeri</span><h2>Sekilas suasana BALAKOSA.</h2></div><div class="gal" id="gl"></div></div></section>
+
+<section class="s"><div class="w"><div class="sh"><span class="eyebrow">Cerita Tamu</span><h2>Pengalaman yang dirasakan langsung.</h2></div><div class="g3" id="tms"></div></div></section>
+
+<section class="s cr"><div class="w"><div class="sh"><span class="eyebrow">Cara Booking</span><h2>Tiga langkah menuju liburan.</h2></div><div class="steps"><div><div class="sn">01</div><h3>Pilih Tanggal</h3><p>Lihat ketersediaan di kalender dan pilih layanan.</p></div><div><div class="sn">02</div><h3>Isi Form & Bayar</h3><p>Lengkapi data lalu pilih metode pembayaran.</p></div><div><div class="sn">03</div><h3>Konfirmasi</h3><p>Admin mengonfirmasi lewat WhatsApp dengan cepat.</p></div></div></div></section>
+
+<section class="s"><div class="w"><div class="sh"><span class="eyebrow">Jurnal</span><h2>Cerita & inspirasi terbaru.</h2></div><div class="g3" id="po"></div></div></section>
+
+<section class="s cr"><div class="w"><div class="sh" style="margin-inline:auto;text-align:center"><span class="eyebrow">FAQ</span><h2>Yang sering ditanyakan.</h2></div><div class="fq">
+<details><summary>Bagaimana cara booking?</summary><p>Pilih layanan dan tanggal di kalender, isi data, lalu kirim. Pesanan masuk ke WhatsApp admin.</p></details>
+<details><summary>Apakah harus bayar penuh di awal?</summary><p>Tidak. Anda bisa memilih DP, lunas, QRIS, atau bayar di lokasi.</p></details>
+<details><summary>Bisakah jadwal diubah atau dibatalkan?</summary><p>Bisa, sesuai ketentuan tiap layanan. Hubungi admin minimal H-3 untuk hotel dan H-2 untuk trip.</p></details>
+<details><summary>Berapa lama konfirmasi dari admin?</summary><p>Umumnya kurang dari 1×24 jam, lebih cepat di jam operasional.</p></details></div></div></section>
+
+<section class="cta"><span class="eyebrow" style="color:#d7ebff">Pesan Sekarang</span><h2>Siap merencanakan<br>liburan Anda?</h2><p>Amankan tanggal favorit dan terima konfirmasi cepat via WhatsApp.</p><a class="btn wt" href="booking.html">Mulai Booking</a></section>
+</main>
+<div id="ft"></div><div class="lbx" id="lbx" onclick="this.classList.remove('on')"><img id="lbi" alt=""></div>
+<script src="app.js"></script><script>
+layout('index');
+const HS=[['1520250497591-112f2f40a3f4','Stay · Relax · Explore','Menginap tenang,<br>tanpa ribet.','Hotel, penginapan, cottage, dan trip dalam satu kalender booking.','hotel','Best Seller'],['1445019980597-93fa8acb246c','Privasi di Alam','Cottage hangat<br>di tengah alam.','Rumah singgah untuk keluarga dan gathering kecil.','cottage','Favorit Keluarga'],['1537996194471-e657df975ab4','Jelajah Lokal','Trip seru bersama<br>pemandu lokal.','Rute fleksibel, transport, tiket, dan makan siang sudah termasuk.','trip','Paling Seru']];
+function slider(){const sl=[...document.querySelectorAll('.hs')],ds=[...document.querySelectorAll('.hdot')];let c=0,t,p=0;
+const show=i=>{c=(i+sl.length)%sl.length;sl.forEach((s,k)=>s.classList.toggle('on',k==c));ds.forEach((d,k)=>d.classList.toggle('on',k==c))},go=()=>{clearInterval(t);if(!matchMedia('(prefers-reduced-motion:reduce)').matches)t=setInterval(()=>p||show(c+1),5000)};
+$('#pv').onclick=()=>{show(c-1);go()};$('#nx').onclick=()=>{show(c+1);go()};ds.forEach((d,k)=>d.onclick=()=>{show(k);go()});$('#hc').onmouseenter=()=>p=1;$('#hc').onmouseleave=()=>p=0;go()}
+function calc(){const s=SV.find(x=>x.id==$('#cs').value);if(!s)return;const q=Math.max(1,+$('#cq').value||1),t=s.price*q;$('#cl').firstChild.textContent=s.unit=='orang'?'Jumlah peserta':'Jumlah malam';$('#ct').textContent=rp(t);$('#cdp').textContent=rp(t*.3)}
+window.lb=i=>{$('#lbi').src=`https://images.unsplash.com/photo-${i}?auto=format&fit=crop&w=1600&q=80`;$('#lbx').classList.add('on')};
+load().then(()=>{
+$('#hsl').innerHTML=HS.map((h,i)=>{const s=SV.find(x=>x.id==h[4]);return `<article class="hs${i?'':' on'}"><div class="ph">${im(h[0],1800)}</div><div class="hin"><div class="hcp"><span class="eyebrow">${h[1]}</span><h1>${h[2]}</h1><p class="lead wl">${h[3]}</p><div class="hact"><a class="btn wt" href="booking.html">Booking Sekarang</a><a class="btn wa" href="https://wa.me/${WA}">WhatsApp</a></div></div><div class="hcard"><span class="bdg">${h[5]}</span><h3>${s.name}</h3><div class="hpr">${rp(s.price)}</div><p>${s.description}</p><a class="btn" style="width:100%" href="booking.html?svc=${s.id}">Booking ${s.name}</a></div></div></article>`}).join('');
+$('#hdt').innerHTML=HS.map((h,i)=>`<button class="hdot${i?'':' on'}" aria-label="Slide ${i+1}"></button>`).join('');slider();
+$('#a1').innerHTML=img('1542314831-068cd1dbfeeb','Suasana BALAKOSA',900);
+const o=SV.map(s=>`<option value="${s.id}">${s.name}</option>`).join('');$('#bs').innerHTML=o;$('#cs').innerHTML=o;$('#cs').onchange=calc;$('#cq').oninput=calc;$('#bs').onchange=()=>$('#bgo').href='booking.html?svc='+$('#bs').value;$('#bgo').href='booking.html?svc='+$('#bs').value;calc();
+$('#sv').innerHTML=SV.map(pcCard).join('');$('#po').innerHTML=PO.slice(0,3).map(poCard).join('');
+$('#gl').innerHTML=GL.map(g=>`<div class="ph" onclick="lb('${g.image}')">${im(g.image,g.caption,800)}</div>`).join('');
+$('#tms').innerHTML=TM.map(t=>`<article class="tm"><div class="st">${'★'.repeat(t.rating)}</div><p>“${t.content}”</p><div class="au"><i>${t.name.slice(0,2).toUpperCase()}</i><div><b style="font-size:.85rem">${t.name}</b><small>${t.role}</small></div></div></article>`).join('');
+const cd=()=>{const d=new Date(),e=new Date(d.getFullYear(),d.getMonth()+1,1)-d,f=(n,u)=>String(Math.floor(e/u)%n).padStart(2,'0');$('#cd').innerHTML=[['Hari',864e5,32],['Jam',36e5,24],['Menit',6e4,60],['Detik',1e3,60]].map(x=>`<div><b>${f(x[2],x[1])}</b><small>${x[0]}</small></div>`).join('')};cd();setInterval(cd,1000)});
+</script></body></html>

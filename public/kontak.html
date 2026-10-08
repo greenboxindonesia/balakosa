@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Hubungi BALAKOSA — pertanyaan, permintaan khusus, atau kerja sama.">
+<title>Kontak — BALAKOSA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body>
+<div id="hd"></div>
+<section class="pg"><div class="ph" id="hi"></div><div class="w"><span class="eyebrow">Kontak</span><h1>Kami senang mendengar dari Anda.</h1><p>Pertanyaan, permintaan khusus, atau kerja sama, hubungi kami kapan saja.</p></div></section>
+<section class="s"><div class="w g2" style="align-items:start"><div><span class="eyebrow">Hubungi Kami</span><h2>Mari bicara</h2>
+<div class="card" style="margin:26px 0 16px"><h3>📍 Alamat</h3><p id="caddr">Tulungagung, Jawa Timur</p></div>
+<div class="card" style="margin-bottom:16px"><h3>💬 WhatsApp & Telepon</h3><p id="cphone"></p></div>
+<div class="card"><h3>✉️ Email</h3><p id="cmail"></p></div></div>
+<div class="fm"><h3 style="margin-bottom:18px">Kirim Pesan</h3><input id="n" placeholder="Nama lengkap"><input id="e" type="email" placeholder="Email"><textarea id="m" rows="5" placeholder="Pesan Anda"></textarea><button class="btn" id="kbtn" onclick="kirim()">Kirim Pesan</button><p id="kmsg" style="margin-top:14px;color:var(--ok);font-weight:600;display:none"></p></div></div></section>
+<section style="height:380px"><iframe title="Peta" style="width:100%;height:100%;border:0" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=111.85,-8.12,112.1,-7.98&layer=mapnik"></iframe></section>
+<div id="ft"></div>
+<script src="app.js"></script><script>
+layout('kontak');$('#hi').innerHTML=im('1520250497591-112f2f40a3f4',1800);
+load().then(()=>{$('#caddr').textContent=SET.contact_address||'Tulungagung, Jawa Timur';$('#cphone').textContent=(SET.contact_phone||'')+' · '+(SET.open_hours||'')});
+async function kirim(){
+  const f=i=>$('#'+i).value.trim();
+  if(!f('n')||!f('m'))return alert('Lengkapi nama dan pesan');
+  const b=$('#kbtn');b.disabled=true;b.textContent='Mengirim…';
+  try{const r=await fetch(API+'/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:f('n'),email:f('e'),message:f('m')})});
+    const d=await r.json();
+    if(d.ok){$('#kmsg').style.display='block';$('#kmsg').textContent=d.message;$('#n').value=$('#e').value=$('#m').value='';}
+    else alert(d.error||'Gagal mengirim pesan');
+  }catch(e){alert('Gagal mengirim pesan. Coba lagi.')}
+  b.disabled=false;b.textContent='Kirim Pesan';
+}
+</script></body></html>

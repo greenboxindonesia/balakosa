@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Blog BALAKOSA — tips, panduan, dan cerita wisata Tulungagung.">
+<title>Blog — BALAKOSA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body>
+<div id="hd"></div>
+<section class="pg"><div class="ph" id="hi"></div><div class="w" id="bh"><span class="eyebrow">Jurnal</span><h1>Cerita & Inspirasi Perjalanan</h1><p>Tips, panduan, dan kisah dari BALAKOSA.</p></div></section>
+<section class="s"><div class="w" id="bm"></div></section>
+<div id="ft"></div>
+<script src="app.js"></script><script>
+layout('blog');$('#hi').innerHTML=im('1469474968028-56623f02e42e',1800);
+load().then(async()=>{
+const slug=new URLSearchParams(location.search).get('p');
+if(slug){
+  const p=await get('posts/'+slug);
+  if(p){
+    document.title=p.title+' — BALAKOSA';
+    $('#hi').innerHTML=im(p.image,1800);
+    $('#bh').innerHTML=`<span class="eyebrow">${p.category} · ${p.date} · ${p.read_minutes} mnt baca</span><h1>${p.title}</h1>`;
+    $('#bm').innerHTML=`<div class="art"><p class="lead">${p.excerpt}</p>${p.content.split(/\n+/).map(t=>`<p>${t}</p>`).join('')}<a class="btn" href="blog.html">← Semua artikel</a></div>`;
+    rv();return;
+  }
+}
+const cats=['Semua',...new Set(PO.map(x=>x.category))];
+window.r=c=>{$('#bm').innerHTML=`<div style="margin-bottom:36px">${cats.map(k=>`<button class="pl${k==c?' on':''}" onclick="r('${k}')">${k}</button>`).join('')}</div><div class="g3">${PO.filter(x=>c=='Semua'||x.category==c).map(poCard).join('')}</div>`;rv()};
+r('Semua');
+});
+</script></body></html>

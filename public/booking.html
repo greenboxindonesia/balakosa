@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Booking hotel, penginapan, cottage, dan trip BALAKOSA langsung dari kalender.">
+<title>BALAKOSA — Booking Hotel, Penginapan, Cottage & Trip</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+body{padding-top:72px;background:var(--soft)}
+.bk-hero{background:linear-gradient(160deg,var(--sky),var(--soft) 55%,#fdf6ec);padding:56px 0 40px;margin-top:-72px}
+.bk-hero h1{color:var(--bd)}
+.bk-hero .chip{background:#fff}
+.chip{display:inline-block;background:var(--bs);color:var(--b);border-radius:99px;padding:5px 13px;font-size:12px;margin:2px 4px 2px 0;font-weight:600}
+.bk{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:22px;align-items:start}
+.stk{position:sticky;top:96px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:14px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.info{background:var(--bs);border-radius:14px;padding:14px;font-size:14px;margin-bottom:6px}
+.sec{margin-top:26px}
+.sec>h3{display:flex;gap:8px;align-items:center;font-size:.95rem}
+.sec>h3 span{background:var(--b);color:#fff;border-radius:50%;width:22px;height:22px;font-size:12px;display:grid;place-items:center;font-weight:700}
+input,select,textarea{width:100%;border:1.5px solid var(--ln);border-radius:12px;padding:11px 13px;font:inherit;background:#fff;color:var(--ink);outline:0;transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{border-color:var(--b);box-shadow:0 0 0 4px rgba(37,99,235,.12)}
+label{display:block;font-size:13px;font-weight:600;color:var(--bd)}
+label input,label select,label textarea{margin-top:6px;font-weight:400}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.ch button{border:0;background:var(--bs);color:var(--b);width:34px;height:34px;border-radius:10px;font-size:18px;cursor:pointer;transition:.2s}
+.ch button:hover{background:var(--sky)}
+.cg{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cg i{font-style:normal;font-size:11px;color:var(--mut);font-weight:600}
+.d{aspect-ratio:1;border:0;border-radius:11px;background:#fff;font:inherit;cursor:pointer;min-height:36px;transition:.15s;font-weight:500;color:var(--ink)}
+.d:hover:not(:disabled){background:var(--bs)}
+.d:disabled{color:#c3cbdd;text-decoration:line-through;cursor:not-allowed;background:#f2f4f9}
+.d.on{background:var(--b);color:#fff;font-weight:700}
+.d.rg{background:var(--sky);color:var(--b)}
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.po2{border:1.5px solid var(--ln);border-radius:14px;padding:12px;cursor:pointer;background:#fff;font-size:13px;transition:.2s}
+.po2 b{display:block;font-size:13px;margin-bottom:2px}
+.po2.on{border-color:var(--b);background:var(--bs)}
+.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--ln);font-size:14px}
+.row b{text-align:right}
+.tot{font:700 20px Sora;color:var(--b)}
+.md{position:fixed;inset:0;background:rgba(11,42,107,.45);display:none;place-items:center;padding:18px;z-index:90;backdrop-filter:blur(4px)}
+.md.s{display:grid}
+.md .card{max-width:430px}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(8px);background:var(--bd);color:#fff;padding:11px 18px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:.3s;z-index:99;max-width:calc(100% - 32px);text-align:center}
+#toast.s{opacity:1;transform:translateX(-50%)}
+footer.pf{margin-top:56px;padding:28px 0 36px;text-align:center;color:var(--mut2);font-size:13px}
+@media(max-width:900px){.bk{grid-template-columns:minmax(0,1fr)}.bk>.card{min-width:0}.stk{position:static}.fg,.pay{grid-template-columns:minmax(0,1fr)}.fg input{min-width:0}}
+</style></head><body>
+<div id="hd"></div>
+<main id="pub">
+<section class="bk-hero"><div class="w"><span class="chip">Hotel · Penginapan · Cottage · Trip</span>
+<h1 style="font-size:clamp(1.8rem,4vw,3rem)">Menginap & berlibur, cukup pilih tanggalnya.</h1><p class="lead">Booking langsung dari kalender, konfirmasi cepat via WhatsApp.</p></div></section>
+<section class="w" style="margin-top:-10px"><div class="bk">
+<div class="card">
+<h3><span class="chip">1</span> Pilih Layanan</h3><div class="tabs" id="stb"></div><div class="info" id="sd"></div>
+<div class="sec"><h3><span class="chip">2</span> Pilih Tanggal</h3><div id="cal"></div><p class="lead" id="dt" style="margin-top:10px;font-size:.85rem"></p></div>
+<div class="sec"><h3><span class="chip">3</span> Data Pemesan</h3><div class="fg">
+<label>Nama lengkap<input id="nm" placeholder="Nama Anda" autocomplete="name"></label>
+<label>No. WhatsApp<input id="wa" type="tel" placeholder="08xxxxxxxxxx" autocomplete="tel" inputmode="tel"></label>
+<label>Jumlah tamu / peserta<input id="g" type="number" min="1" value="2" oninput="sum()"></label>
+<label>Catatan (opsional)<input id="note" placeholder="Permintaan khusus"></label></div></div>
+<div class="sec"><h3><span class="chip">4</span> Pembayaran</h3><div class="pay" id="pay"></div><div class="info" id="pi"></div></div>
+</div>
+<div class="card stk"><h3>Ringkasan Booking</h3><div id="sum"></div><button class="btn" style="width:100%;margin-top:16px" onclick="send()">Kirim Booking via WhatsApp</button><small style="display:block;margin-top:10px;text-align:center">Admin akan mengonfirmasi ketersediaan maksimal 1×24 jam.</small></div>
+</div></section>
+<div id="ft"></div>
+</main>
+
+<div class="md" id="ok"><div class="card" id="okc"></div></div>
+<div id="toast"></div>
+
+<script src="app.js"></script><script>
+layout('booking');
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const pd=k=>new Date(k+'T00:00'),fd=k=>pd(k).toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'});
+const esc2=s=>String(s??'').replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('s');setTimeout(()=>e.classList.remove('s'),2600)}
+
+const PAY=[['dp','Transfer · DP','Kunci tanggal dengan DP, lunas saat check-in.'],['lunas','Transfer · Lunas','Bayar penuh sekarang.'],['qris','QRIS','Admin kirim kode QRIS via WhatsApp.'],['lokasi','Bayar di Lokasi','Tunai saat tiba, tanpa DP.']];
+let svc='hotel',sel={s:null,e:null},pay='dp',cur=new Date();cur.setDate(1);
+let bookedSet=new Set();
+
+function init(){if(!SV.length)return setTimeout(init,120);
+const pre=new URLSearchParams(location.search).get('svc');
+if(pre&&SV.find(x=>x.slug==pre))svc=pre;
+setSv(svc)}
+function setSv(id){svc=id;sel={s:null,e:null};const s=SV.find(x=>x.slug==id);
+$('#stb').innerHTML=SV.map(x=>`<button class="pl${x.slug==id?' on':''}" onclick="setSv('${x.slug}')">${x.icon} ${x.name}</button>`).join('');
+$('#sd').innerHTML=`<b>${s.name} · ${rp(s.price)}/${s.unit}</b><p style="margin:6px 0">${s.description}</p>${s.features.map(x=>`<span class="chip" style="background:#fff">${x}</span>`).join('')}${s.rules?`<p style="margin-top:8px"><small>${esc2(s.rules)}</small></p>`:''}`;
+drawCal();payUI();sum()}
+async function fetchBooked(){const m=iso(cur).slice(0,7);try{const r=await fetch(API+'/api/availability?service='+svc+'&month='+m);const d=await r.json();bookedSet=new Set(d.booked||[])}catch(e){bookedSet=new Set()}}
+async function mv(n){cur.setMonth(cur.getMonth()+n);await fetchBooked();drawCal()}
+async function drawCal(){await fetchBooked();
+const y=cur.getFullYear(),m=cur.getMonth(),f=new Date(y,m,1).getDay(),n=new Date(y,m+1,0).getDate(),t=iso(new Date());
+let h=`<div class="ch"><button type="button" onclick="mv(-1)">‹</button><b>${cur.toLocaleDateString('id-ID',{month:'long',year:'numeric'})}</b><button type="button" onclick="mv(1)">›</button></div><div class="cg">`+['Min','Sen','Sel','Rab','Kam','Jum','Sab'].map(x=>`<i>${x}</i>`).join('');
+for(let i=0;i<f;i++)h+='<span></span>';
+for(let d=1;d<=n;d++){const k=iso(new Date(y,m,d)),dis=k<t||bookedSet.has(k);
+let c='d'+(dis?' x':'');if(k==sel.s||k==sel.e)c='d on';else if(sel.e&&k>sel.s&&k<sel.e)c='d rg';
+h+=`<button type="button" class="${c}"${dis?' disabled':''} onclick="pick('${k}')">${d}</button>`}
+$('#cal').innerHTML=h+'</div>'}
+function pick(k){const s=SV.find(x=>x.slug==svc),tr=s&&s.unit=='orang';
+if(tr||!sel.s||sel.e){sel={s:k,e:null}}else{let ok=k>sel.s,dd=sel.s;while(true){const d=new Date(dd+'T00:00');d.setDate(d.getDate()+1);dd=iso(d);if(dd>=k)break;if(bookedSet.has(dd)){ok=false;break}}sel=ok?{s:sel.s,e:k}:{s:k,e:null}}drawCal();sum()}
+function payUI(){$('#pay').innerHTML=PAY.map(p=>`<div class="po2${p[0]==pay?' on':''}" onclick="pay='${p[0]}';payUI();sum()"><b>${p[1]}</b>${p[0]=='dp'?'DP '+(SET.dp_percent||30)+'% untuk mengunci tanggal.':p[2]}</div>`).join('');
+$('#pi').innerHTML=pay=='qris'?'Kode QRIS dikirim admin via WhatsApp setelah booking diterima.':pay=='lokasi'?'Bayar saat tiba. Booking tetap perlu dikonfirmasi admin.':'Transfer ke <b>'+esc2(SET.payment_info||'rekening admin')+'</b>. Kirim bukti transfer ke WhatsApp admin.'}
+function calc(){const s=SV.find(x=>x.slug==svc),g=Math.max(1,+$('#g').value||1),tr=s.unit=='orang',n=tr?1:(sel.s&&sel.e?Math.round((pd(sel.e)-pd(sel.s))/864e5):0),tot=tr?s.price*g:s.price*n;
+const dp=+(SET.dp_percent||30);
+return{s,g,n,tot,tr,dp,due:pay=='dp'?Math.round(tot*dp/100):pay=='lokasi'?0:tot}}
+function sum(){const c=calc();if(!c)return;
+const dt=!sel.s?(c.tr?'Pilih tanggal keberangkatan':'Pilih tanggal check-in'):c.tr?fd(sel.s):fd(sel.s)+(sel.e?' → '+fd(sel.e)+' ('+c.n+' malam)':' → pilih check-out');
+$('#dt').textContent=dt;
+$('#sum').innerHTML=`<div class="row"><span>Layanan</span><b>${c.s.name}</b></div><div class="row"><span>Tanggal</span><b>${dt}</b></div><div class="row"><span>Tamu</span><b>${c.g} orang</b></div><div class="row"><span>Harga</span><b>${rp(c.s.price)}/${c.s.unit}</b></div><div class="row"><span>Total</span><span class="tot">${rp(c.tot)}</span></div><div class="row"><span>Dibayar sekarang</span><b>${rp(c.due)}</b></div>`}
+async function send(){const c=calc(),v=id=>$('#'+id).value.trim();
+if(!sel.s||(!c.tr&&!sel.e))return toast('Pilih tanggal terlebih dulu');
+if(!v('nm')||v('wa').replace(/\D/g,'').length<9)return toast('Lengkapi nama & nomor WhatsApp');
+const b=event.target;b.disabled=true;b.textContent='Mengirim…';
+try{
+const r=await fetch(API+'/api/bookings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({service:svc,name:v('nm'),phone:v('wa'),guests:+$('#g').value||1,checkin:sel.s,checkout:sel.e||sel.s,payment_method:pay,notes:v('note')})});
+const d=await r.json();
+if(!r.ok){toast(d.error||'Gagal menyimpan booking');b.disabled=false;b.textContent='Kirim Booking via WhatsApp';return}
+const pm=PAY.find(p=>p[0]==pay)[1];
+const t=`*BOOKING BARU BALAKOSA*\nID: ${d.code}\nLayanan: ${d.serviceName}\nTanggal: ${d.message}\nTamu: ${v('nm')} (${d.g||''}${$('#g').value})\nWA: ${v('wa')}\nTotal: ${d.priceLabel}`;
+open('https://wa.me/'+WA+'?text='+encodeURIComponent(t),'_blank');
+$('#okc').innerHTML=`<div style="font-size:2.2rem;margin-bottom:10px">✅</div><h3>Booking Terkirim</h3><p>ID booking: <b>${d.code}</b></p><p class="lead" style="margin:8px 0 16px;font-size:.88rem">Pesanan dikirim ke WhatsApp admin. ${pay=='lokasi'?'Tunggu konfirmasi ketersediaan.':pay=='qris'?'Admin akan mengirim kode QRIS.':'Transfer ke '+esc2(SET.payment_info||'rekening admin')+' lalu kirim bukti bayar.'}</p><button class="btn" onclick="$('#ok').classList.remove('s')">Tutup</button>`;
+$('#ok').classList.add('s');sel={s:null,e:null};drawCal();sum();
+}catch(e){toast('Gagal terhubung ke server. Coba lagi.')}
+b.disabled=false;b.textContent='Kirim Booking via WhatsApp'}
+load().then(init);
+</script></body></html>
