@@ -4,92 +4,162 @@
 <title>BALAKOSA — Booking Hotel, Penginapan, Cottage & Trip</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/svg+xml" href="images/favicon/favicon.svg"><link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png"><link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png"><link rel="manifest" href="images/favicon/site.webmanifest"><link rel="stylesheet" href="css/style.css">
 <style>
-body{padding-top:72px;background:var(--soft)}
-.bk-hero{background:linear-gradient(160deg,var(--sky),var(--soft) 55%,#fdf6ec);padding:56px 0 40px;margin-top:-72px}
-.bk-hero h1{color:var(--bd)}
-.bk-hero .chip{background:#fff}
-.chip{display:inline-block;background:var(--bs);color:var(--b);border-radius:99px;padding:5px 13px;font-size:12px;margin:2px 4px 2px 0;font-weight:600}
-.bk{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:22px;align-items:start}
-.stk{position:sticky;top:96px}
-.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:14px;scrollbar-width:none}
+body{background:var(--soft)}
+
+/* ---------- hero ---------- */
+.bk-hero{position:relative;background-color:var(--bd);background:linear-gradient(160deg,#e9f1fe,#f6f9fd 55%,#fdf6ec);background-size:cover;background-position:center 35%;border-bottom:1px solid var(--ln);padding:120px 0 48px}
+.bk-hero .chip{display:inline-flex;align-items:center;gap:8px;background:#fff;box-shadow:0 8px 18px -12px rgba(16,24,40,.45)}
+.bk-hero .chip:before{content:'';width:7px;height:7px;border-radius:50%;background:var(--b)}
+.bk-hero h1{color:var(--bd);font-size:clamp(1.9rem,4vw,3rem);max-width:760px;margin-top:18px}
+.bk-hero .lead{margin-top:16px;max-width:560px}
+.bk-hero.has-img h1{color:#fff}
+.bk-hero.has-img .lead{color:rgba(255,255,255,.9)}
+.bk-hero.has-img .chip{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);color:#fff;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.bk-hero.has-img .chip:before{background:#fff}
+
+/* ---------- layout ---------- */
+.bk{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:26px;align-items:start;padding:46px 0 70px}
+.bk .card:hover{transform:none;box-shadow:var(--sh)}
+.bk-main{padding:30px 32px}
+.bk-sum{padding:26px}
+.stk{position:sticky;top:90px}
+
+/* ---------- step sections ---------- */
+.sec{margin-top:32px;padding-top:28px;border-top:1px solid var(--ln)}
+.sec:first-of-type{margin-top:0;padding-top:0;border-top:0}
+.sec-head{display:flex;align-items:center;gap:12px;font-size:1rem}
+.sec-head .n{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--b);color:#fff;font:800 12px Sora;display:grid;place-items:center}
+.bk-sum h3{font-size:1.3rem;padding-bottom:14px;border-bottom:1px solid var(--ln);margin-bottom:16px}
+
+/* ---------- tabs ---------- */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin:18px 0 14px;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.info{background:var(--bs);border-radius:14px;padding:14px;font-size:14px;margin-bottom:6px}
-.sec{margin-top:26px}
-.sec>h3{display:flex;gap:8px;align-items:center;font-size:.95rem}
-.sec>h3 span{background:var(--b);color:#fff;border-radius:50%;width:22px;height:22px;font-size:12px;display:grid;place-items:center;font-weight:700}
+.tabs .pl{flex:0 0 auto;white-space:nowrap;margin:0}
+
+/* ---------- info panel (layanan & pembayaran) ---------- */
+.info{background:#f4f8ff;border:1px solid rgba(37,99,235,.16);border-radius:16px;padding:16px 18px;font-size:.86rem;line-height:1.55}
+.info-top{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px}
+.info-name{display:inline-flex;align-items:center;gap:8px;font-family:Sora;font-weight:700;color:var(--bd)}
+.info-price{margin-left:auto;font-family:Sora;font-weight:800;color:var(--b);font-size:1rem}
+.info-price small{font-weight:600;color:var(--mut);font-size:.72rem}
+.info-desc{margin:9px 0 0;color:var(--mut);font-size:.82rem}
+.info-feats{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.info-feats .chip{margin:0;background:#fff;border:1px solid var(--ln);font-size:.72rem;padding:4px 10px;box-shadow:none}
+.info-note{display:flex;gap:8px;align-items:flex-start;margin-top:12px;padding-top:12px;border-top:1px dashed rgba(37,99,235,.22);color:var(--mut);font-size:.78rem}
+.info-note .icn{color:var(--b);flex:0 0 auto;margin-top:1px}
+
+/* ---------- form ---------- */
 input,select,textarea{width:100%;border:1.5px solid var(--ln);border-radius:12px;padding:11px 13px;font:inherit;background:#fff;color:var(--ink);outline:0;transition:border-color .2s,box-shadow .2s}
 input:focus,select:focus,textarea:focus{border-color:var(--b);box-shadow:0 0 0 4px rgba(37,99,235,.12)}
 label{display:block;font-size:13px;font-weight:600;color:var(--bd)}
 label input,label select,label textarea{margin-top:6px;font-weight:400}
-.fg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.ch button{border:0;background:var(--bs);color:var(--b);width:34px;height:34px;border-radius:10px;font-size:18px;cursor:pointer;transition:.2s}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+
+/* ---------- calendar (full width) ---------- */
+#cal{width:100%}
+.ch{display:flex;justify-content:space-between;align-items:center;margin:16px 0 14px;gap:10px}
+.ch b{font-family:Sora;font-size:.95rem;text-transform:capitalize}
+.ch button{border:0;background:var(--bs);color:var(--b);width:36px;height:36px;border-radius:10px;font-size:18px;cursor:pointer;transition:.2s}
 .ch button:hover{background:var(--sky)}
-.cg{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
-.cg i{font-style:normal;font-size:11px;color:var(--mut);font-weight:600}
-.d{aspect-ratio:1;border:0;border-radius:11px;background:#fff;font:inherit;cursor:pointer;min-height:36px;transition:.15s;font-weight:500;color:var(--ink)}
+.cg{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;text-align:center}
+.cg i{font-style:normal;font-size:11px;color:var(--mut);font-weight:700;letter-spacing:.04em}
+.d{height:50px;border:0;border-radius:11px;background:#fff;font:inherit;cursor:pointer;transition:.15s;font-weight:500;color:var(--ink)}
 .d:hover:not(:disabled){background:var(--bs)}
 .d:disabled{color:#c3cbdd;text-decoration:line-through;cursor:not-allowed;background:#f2f4f9}
 .d.on{background:var(--b);color:#fff;font-weight:700}
 .d.rg{background:var(--sky);color:var(--b)}
-.pay{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.po2{border:1.5px solid var(--ln);border-radius:14px;padding:12px;cursor:pointer;background:#fff;font-size:13px;transition:.2s}
-.po2 b{display:block;font-size:13px;margin-bottom:2px}
+
+/* ---------- payment ---------- */
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 12px}
+.po2{border:1.5px solid var(--ln);border-radius:14px;padding:13px 14px;cursor:pointer;background:#fff;font-size:13px;line-height:1.45;transition:.2s}
+.po2 b{display:block;font-size:13px;margin-bottom:3px}
+.po2:hover{border-color:var(--b)}
 .po2.on{border-color:var(--b);background:var(--bs)}
-.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--ln);font-size:14px}
+
+/* ---------- summary ---------- */
+.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--ln);font-size:14px}
+.row:last-child{border-bottom:0}
 .row b{text-align:right}
 .tot{font:700 20px Sora;color:var(--b)}
+
+/* ---------- modal & toast ---------- */
 .md{position:fixed;inset:0;background:rgba(11,42,107,.45);display:none;place-items:center;padding:18px;z-index:90;backdrop-filter:blur(4px)}
 .md.s{display:grid}
 .md .card{max-width:430px}
 #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(8px);background:var(--bd);color:#fff;padding:11px 18px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:.3s;z-index:99;max-width:calc(100% - 32px);text-align:center}
 #toast.s{opacity:1;transform:translateX(-50%)}
-footer.pf{margin-top:56px;padding:28px 0 36px;text-align:center;color:var(--mut2);font-size:13px}
-@media(max-width:900px){.bk{grid-template-columns:minmax(0,1fr)}.bk>.card{min-width:0}.stk{position:static}.fg,.pay{grid-template-columns:minmax(0,1fr)}.fg input{min-width:0}}
+
+@media(max-width:900px){
+  .bk{grid-template-columns:minmax(0,1fr);gap:24px;padding:34px 0 60px}
+  .stk{position:static;top:auto}
+  .fg,.pay{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:640px){
+  .bk-hero{padding:96px 0 34px}
+  .bk-hero h1{font-size:1.6rem;margin-top:14px}
+  .bk-main,.bk-sum{padding:22px 20px}
+  .bk-sum h3{font-size:1.15rem;padding-bottom:12px}
+  .sec{margin-top:26px;padding-top:22px}
+  .sec-head{font-size:.94rem}
+  .d{height:42px;border-radius:9px}
+  .cg{gap:6px}
+  .ch{margin:14px 0 10px}
+  .ch button{width:32px;height:32px}
+  .md .card{max-width:100%}
+}
 </style></head><body>
 <div id="hd"></div>
 <main id="pub">
-<section class="bk-hero"><div class="w"><span class="chip">Hotel · Penginapan · Cottage · Trip</span>
-<h1 style="font-size:clamp(1.8rem,4vw,3rem)">Menginap & berlibur, cukup pilih tanggalnya.</h1><p class="lead">Booking langsung dari kalender, konfirmasi cepat via WhatsApp.</p></div></section>
-<section class="w" style="margin-top:-10px"><div class="bk">
-<div class="card">
-<h3><span class="chip">1</span> Pilih Layanan</h3><div class="tabs" id="stb"></div><div class="info" id="sd"></div>
-<div class="sec"><h3><span class="chip">2</span> Pilih Tanggal</h3><div id="cal"></div><p class="lead" id="dt" style="margin-top:10px;font-size:.85rem"></p></div>
-<div class="sec"><h3><span class="chip">3</span> Data Pemesan</h3><div class="fg">
+<section class="bk-hero" id="bkhero"><div class="w">
+<span class="chip">Hotel · Penginapan · Cottage · Trip</span>
+<h1>Menginap &amp; berlibur, cukup pilih tanggalnya.</h1>
+<p class="lead">Booking langsung dari kalender, konfirmasi cepat via WhatsApp.</p>
+</div></section>
+
+<section class="w"><div class="bk">
+<div class="card bk-main">
+<h3 class="sec-head"><span class="n">1</span> Pilih Layanan</h3>
+<div class="tabs" id="stb"></div><div class="info" id="sd"></div>
+<div class="sec"><h3 class="sec-head"><span class="n">2</span> Pilih Tanggal</h3><div id="cal"></div><p class="lead" id="dt" style="margin-top:12px;font-size:.85rem"></p></div>
+<div class="sec"><h3 class="sec-head"><span class="n">3</span> Data Pemesan</h3><div class="fg">
 <label>Nama lengkap<input id="nm" placeholder="Nama Anda" autocomplete="name"></label>
 <label>No. WhatsApp<input id="wa" type="tel" placeholder="08xxxxxxxxxx" autocomplete="tel" inputmode="tel"></label>
 <label>Jumlah tamu / peserta<input id="g" type="number" min="1" value="2" oninput="sum()"></label>
 <label>Catatan (opsional)<input id="note" placeholder="Permintaan khusus"></label></div></div>
-<div class="sec"><h3><span class="chip">4</span> Pembayaran</h3><div class="pay" id="pay"></div><div class="info" id="pi"></div></div>
+<div class="sec"><h3 class="sec-head"><span class="n">4</span> Pembayaran</h3><div class="pay" id="pay"></div><div class="info" id="pi"></div></div>
 </div>
-<div class="card stk"><h3>Ringkasan Booking</h3><div id="sum"></div><button class="btn" style="width:100%;margin-top:16px" onclick="send()">Kirim Booking via WhatsApp</button><small style="display:block;margin-top:10px;text-align:center">Admin akan mengonfirmasi ketersediaan maksimal 1×24 jam.</small></div>
+<aside class="card stk bk-sum"><h3>Ringkasan Booking</h3><div id="sum"></div><button class="btn" style="width:100%;margin-top:18px" onclick="send()">Kirim Booking via WhatsApp</button><small style="display:block;margin-top:10px;text-align:center">Admin akan mengonfirmasi ketersediaan maksimal 1×24 jam.</small></aside>
 </div></section>
-<div id="ft"></div>
 </main>
+<div id="ft"></div>
 
 <div class="md" id="ok"><div class="card" id="okc"></div></div>
 <div id="toast"></div>
 
-<script src="icons.js"></script><script src="app.js"></script><script>
+<script src="js/icons.js"></script><script src="js/app.js"></script><script>
 layout('booking');
 const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const pd=k=>new Date(k+'T00:00'),fd=k=>pd(k).toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'});
 const esc2=s=>String(s??'').replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
+const heroSrc=v=>!v?null:(/^https?:/i.test(v)?v:'https://images.unsplash.com/photo-'+v+'?auto=format&fit=crop&w=1800&q=70');
 function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('s');setTimeout(()=>e.classList.remove('s'),2600)}
 
 const PAY=[['dp','Transfer · DP','Kunci tanggal dengan DP, lunas saat check-in.'],['lunas','Transfer · Lunas','Bayar penuh sekarang.'],['qris','QRIS','Admin kirim kode QRIS via WhatsApp.'],['lokasi','Bayar di Lokasi','Tunai saat tiba, tanpa DP.']];
 let svc='hotel',sel={s:null,e:null},pay='dp',cur=new Date();cur.setDate(1);
 let bookedSet=new Set();
 
+function applyHero(){const el=$('#bkhero'),u=heroSrc(SET.booking_hero_image)||heroSrc('1520250497591-112f2f40a3f4');
+if(u){el.style.backgroundImage=`linear-gradient(115deg,rgba(9,25,48,.82),rgba(9,25,48,.46) 58%,rgba(9,25,48,.2)),url("${u}")`;el.style.backgroundSize='cover';el.classList.add('has-img')}
+init()}
 function init(){if(!SV.length)return setTimeout(init,120);
 const pre=new URLSearchParams(location.search).get('svc');
 if(pre&&SV.find(x=>x.slug==pre))svc=pre;
 setSv(svc)}
 function setSv(id){svc=id;sel={s:null,e:null};const s=SV.find(x=>x.slug==id);
 $('#stb').innerHTML=SV.map(x=>`<button class="pl${x.slug==id?' on':''}" onclick="setSv('${x.slug}')">${ICN(cIk(x.slug),14)} ${x.name}</button>`).join('');
-$('#sd').innerHTML=`<b>${ICN(cIk(s.slug),14)} ${s.name} · ${rp(s.price)}/${s.unit}</b><p style="margin:6px 0">${s.description}</p>${s.features.map(x=>`<span class="chip" style="background:#fff">${x}</span>`).join('')}${s.rules?`<p style="margin-top:8px"><small>${esc2(s.rules)}</small></p>`:''}`;
+$('#sd').innerHTML=`<div class="info-top"><span class="info-name">${ICN(cIk(s.slug),16)} ${esc2(s.name)}</span><span class="info-price">${rp(s.price)}<small>/${esc2(s.unit)}</small></span></div>${s.description?`<p class="info-desc">${esc2(s.description)}</p>`:''}${(s.features&&s.features.length)?`<div class="info-feats">${s.features.map(x=>`<span class="chip">${esc2(x)}</span>`).join('')}</div>`:''}${s.rules?`<div class="info-note">${ICN('dokumen',15)}<span>${esc2(s.rules)}</span></div>`:''}`;
 drawCal();payUI();sum()}
 async function fetchBooked(){const m=iso(cur).slice(0,7);try{const r=await fetch(API+'/api/availability?service='+svc+'&month='+m);const d=await r.json();bookedSet=new Set(d.booked||[])}catch(e){bookedSet=new Set()}}
 async function mv(n){cur.setMonth(cur.getMonth()+n);await fetchBooked();drawCal()}
@@ -127,5 +197,5 @@ $('#okc').innerHTML=`<div style="margin-bottom:10px;color:var(--ok)">${ICN('chec
 $('#ok').classList.add('s');sel={s:null,e:null};drawCal();sum();
 }catch(e){toast('Gagal terhubung ke server. Coba lagi.')}
 b.disabled=false;b.textContent='Kirim Booking via WhatsApp'}
-load().then(init);
+load().then(applyHero);
 </script></body></html>

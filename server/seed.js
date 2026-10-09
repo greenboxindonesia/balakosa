@@ -156,6 +156,7 @@ const settings = {
   open_hours: 'Setiap hari 07.00–22.00 WIB',
   instagram: 'https://instagram.com/balakosa',
   site_title: 'BALAKOSA — Stay, Relax, Explore',
+  booking_hero_image: '1520250497591-112f2f40a3f4',
 };
 
 async function main() {

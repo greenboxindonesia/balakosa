@@ -209,7 +209,7 @@ async function saveTm(id){
 async function delTm(id){if(!confirm('Hapus testimoni ini?'))return;await req('/admin/testimonials/'+id,{method:'DELETE'});toast('Testimoni dihapus');vTesti()}
 
 /* ============ settings ============ */
-const SETF=[['wa_number','Nomor WhatsApp admin (62…)'],['dp_percent','Persentase DP (%)'],['payment_info','Info pembayaran / rekening'],['contact_address','Alamat'],['contact_phone','Telepon'],['contact_email','Email'],['open_hours','Jam operasional'],['instagram','URL Instagram'],['site_title','Judul situs']];
+const SETF=[['wa_number','Nomor WhatsApp admin (62…)'],['dp_percent','Persentase DP (%)'],['payment_info','Info pembayaran / rekening'],['contact_address','Alamat'],['contact_phone','Telepon'],['contact_email','Email'],['open_hours','Jam operasional'],['instagram','URL Instagram'],['site_title','Judul situs'],['booking_hero_image','Gambar header halaman Booking (ID Unsplash atau URL)']];
 async function vSettings(){
   const st=await req('/settings');
   $('#view').innerHTML=`

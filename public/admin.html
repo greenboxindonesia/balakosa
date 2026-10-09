@@ -3,12 +3,12 @@
 <title>Dashboard Admin — BALAKOSA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="admin.css"><style>.side a{display:flex;align-items:center;gap:11px}.side a svg{flex:0 0 auto;opacity:.75}.side a.on svg{opacity:1}.side .out a{display:flex;align-items:center;gap:11px}#mb{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:#fff;border:1px solid #e3e9f3;font-size:0}#mb svg{color:#101828}</style></head><body>
+<link rel="icon" type="image/svg+xml" href="images/favicon/favicon.svg"><link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png"><link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png"><link rel="manifest" href="images/favicon/site.webmanifest"><link rel="stylesheet" href="css/admin.css"><style>.side a{display:flex;align-items:center;gap:11px}.side a svg{flex:0 0 auto;opacity:.75}.side a.on svg{opacity:1}.side .out a{display:flex;align-items:center;gap:11px}#mb{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:#fff;border:1px solid #e3e9f3;font-size:0}#mb svg{color:#101828}</style></head><body>
 
 <!-- ===== Login ===== -->
 <section class="login" id="login">
   <div class="lbox">
-    <div class="brand"><i>B</i>BALAKOSA · Admin</div>
+    <div class="brand"><img class="brand-logo" src="images/logo.png" alt="" width="40" height="40">BALAKOSA · Admin</div>
     <p class="sub">Masuk untuk mengelola booking, layanan, dan konten situs.</p>
     <div class="lerr" id="lerr"></div>
     <label>Username<input id="lu" value="admin" autocomplete="username"></label>
@@ -21,7 +21,7 @@
 <!-- ===== Shell ===== -->
 <div class="shell" id="shell">
   <aside class="side" id="side">
-    <div class="brand"><i>B</i>BALAKOSA</div>
+    <div class="brand"><img class="brand-logo" src="images/logo.png" alt="" width="34" height="34">BALAKOSA</div>
     <a href="#dash" data-t="dash" class="on"><span id="ic-dash"></span>Dashboard</a>
     <a href="#bookings" data-t="bookings"><span id="ic-buku"></span>Booking <span class="bdg" id="nwait" style="display:none">0</span></a>
     <a href="#services" data-t="services"><span id="ic-hotel"></span>Layanan</a>
@@ -43,6 +43,6 @@
 <div class="md" id="md"><div class="card" id="mdc"></div></div>
 <div id="toast"></div>
 
-<script src="admin.js"></script>
+<script src="js/admin.js"></script>
 <script>['dash','buku','hotel','dok','mail','star','set','out','globe','menu'].forEach(function(k){var m={dash:['dash',18],buku:['buku',18],hotel:['hotel',18],dok:['dokumen',18],mail:['email',18],star:['bintang',18],set:['pengaturan',18],out:['keluar',18],globe:['globe',18],menu:['menu',20]};var e=document.getElementById('ic-'+k);if(e)e.innerHTML=ICN(m[k][0],m[k][1])});</script>
 </body></html>
