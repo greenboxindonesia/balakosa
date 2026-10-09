@@ -3,7 +3,7 @@
 <title>Dashboard Admin — BALAKOSA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="admin.css"></head><body>
+<link rel="stylesheet" href="admin.css"><style>.side a{display:flex;align-items:center;gap:11px}.side a svg{flex:0 0 auto;opacity:.75}.side a.on svg{opacity:1}.side .out a{display:flex;align-items:center;gap:11px}#mb{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:#fff;border:1px solid #e3e9f3;font-size:0}#mb svg{color:#101828}</style></head><body>
 
 <!-- ===== Login ===== -->
 <section class="login" id="login">
@@ -22,18 +22,18 @@
 <div class="shell" id="shell">
   <aside class="side" id="side">
     <div class="brand"><i>B</i>BALAKOSA</div>
-    <a href="#dash" data-t="dash" class="on">📊 Dashboard</a>
-    <a href="#bookings" data-t="bookings">📒 Booking <span class="bdg" id="nwait" style="display:none">0</span></a>
-    <a href="#services" data-t="services">🏨 Layanan</a>
-    <a href="#posts" data-t="posts">📝 Artikel</a>
-    <a href="#contacts" data-t="contacts">✉️ Pesan <span class="bdg" id="nunread" style="display:none">0</span></a>
-    <a href="#testimonials" data-t="testimonials">⭐ Testimoni</a>
-    <a href="#settings" data-t="settings">⚙️ Pengaturan</a>
-    <div class="out"><a href="#" onclick="logout();return false">🚪 Keluar</a><a href="index.html">🌐 Lihat Situs</a></div>
+    <a href="#dash" data-t="dash" class="on"><span id="ic-dash"></span>Dashboard</a>
+    <a href="#bookings" data-t="bookings"><span id="ic-buku"></span>Booking <span class="bdg" id="nwait" style="display:none">0</span></a>
+    <a href="#services" data-t="services"><span id="ic-hotel"></span>Layanan</a>
+    <a href="#posts" data-t="posts"><span id="ic-dok"></span>Artikel</a>
+    <a href="#contacts" data-t="contacts"><span id="ic-mail"></span>Pesan <span class="bdg" id="nunread" style="display:none">0</span></a>
+    <a href="#testimonials" data-t="testimonials"><span id="ic-star"></span>Testimoni</a>
+    <a href="#settings" data-t="settings"><span id="ic-set"></span>Pengaturan</a>
+    <div class="out"><a href="#" onclick="logout();return false"><span id="ic-out"></span> Keluar</a><a href="index.html"><span id="ic-globe"></span>Lihat Situs</a></div>
   </aside>
   <main class="main">
     <div class="mhead">
-      <div style="display:flex;gap:12px;align-items:center"><button id="mb" onclick="$('#side').classList.toggle('open')">☰</button><h1 id="mtitle">Dashboard</h1></div>
+      <div style="display:flex;gap:12px;align-items:center"><button id="mb" onclick="$('#side').classList.toggle('open')"><span id="ic-menu"></span></button><h1 id="mtitle">Dashboard</h1></div>
       <div class="who"><i id="avatar">A</i><span id="whoName">Admin</span></div>
     </div>
     <div id="view"></div>
@@ -44,4 +44,5 @@
 <div id="toast"></div>
 
 <script src="admin.js"></script>
+<script>['dash','buku','hotel','dok','mail','star','set','out','globe','menu'].forEach(function(k){var m={dash:['dash',18],buku:['buku',18],hotel:['hotel',18],dok:['dokumen',18],mail:['email',18],star:['bintang',18],set:['pengaturan',18],out:['keluar',18],globe:['globe',18],menu:['menu',20]};var e=document.getElementById('ic-'+k);if(e)e.innerHTML=ICN(m[k][0],m[k][1])});</script>
 </body></html>

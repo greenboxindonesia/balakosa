@@ -72,7 +72,7 @@ footer.pf{margin-top:56px;padding:28px 0 36px;text-align:center;color:var(--mut2
 <div class="md" id="ok"><div class="card" id="okc"></div></div>
 <div id="toast"></div>
 
-<script src="app.js"></script><script>
+<script src="icons.js"></script><script src="app.js"></script><script>
 layout('booking');
 const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const pd=k=>new Date(k+'T00:00'),fd=k=>pd(k).toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'});
@@ -88,8 +88,8 @@ const pre=new URLSearchParams(location.search).get('svc');
 if(pre&&SV.find(x=>x.slug==pre))svc=pre;
 setSv(svc)}
 function setSv(id){svc=id;sel={s:null,e:null};const s=SV.find(x=>x.slug==id);
-$('#stb').innerHTML=SV.map(x=>`<button class="pl${x.slug==id?' on':''}" onclick="setSv('${x.slug}')">${x.icon} ${x.name}</button>`).join('');
-$('#sd').innerHTML=`<b>${s.name} · ${rp(s.price)}/${s.unit}</b><p style="margin:6px 0">${s.description}</p>${s.features.map(x=>`<span class="chip" style="background:#fff">${x}</span>`).join('')}${s.rules?`<p style="margin-top:8px"><small>${esc2(s.rules)}</small></p>`:''}`;
+$('#stb').innerHTML=SV.map(x=>`<button class="pl${x.slug==id?' on':''}" onclick="setSv('${x.slug}')">${ICN(cIk(x.slug),14)} ${x.name}</button>`).join('');
+$('#sd').innerHTML=`<b>${ICN(cIk(s.slug),14)} ${s.name} · ${rp(s.price)}/${s.unit}</b><p style="margin:6px 0">${s.description}</p>${s.features.map(x=>`<span class="chip" style="background:#fff">${x}</span>`).join('')}${s.rules?`<p style="margin-top:8px"><small>${esc2(s.rules)}</small></p>`:''}`;
 drawCal();payUI();sum()}
 async function fetchBooked(){const m=iso(cur).slice(0,7);try{const r=await fetch(API+'/api/availability?service='+svc+'&month='+m);const d=await r.json();bookedSet=new Set(d.booked||[])}catch(e){bookedSet=new Set()}}
 async function mv(n){cur.setMonth(cur.getMonth()+n);await fetchBooked();drawCal()}
@@ -123,7 +123,7 @@ if(!r.ok){toast(d.error||'Gagal menyimpan booking');b.disabled=false;b.textConte
 const pm=PAY.find(p=>p[0]==pay)[1];
 const t=`*BOOKING BARU BALAKOSA*\nID: ${d.code}\nLayanan: ${d.serviceName}\nTanggal: ${d.message}\nTamu: ${v('nm')} (${d.g||''}${$('#g').value})\nWA: ${v('wa')}\nTotal: ${d.priceLabel}`;
 open('https://wa.me/'+WA+'?text='+encodeURIComponent(t),'_blank');
-$('#okc').innerHTML=`<div style="font-size:2.2rem;margin-bottom:10px">✅</div><h3>Booking Terkirim</h3><p>ID booking: <b>${d.code}</b></p><p class="lead" style="margin:8px 0 16px;font-size:.88rem">Pesanan dikirim ke WhatsApp admin. ${pay=='lokasi'?'Tunggu konfirmasi ketersediaan.':pay=='qris'?'Admin akan mengirim kode QRIS.':'Transfer ke '+esc2(SET.payment_info||'rekening admin')+' lalu kirim bukti bayar.'}</p><button class="btn" onclick="$('#ok').classList.remove('s')">Tutup</button>`;
+$('#okc').innerHTML=`<div style="margin-bottom:10px;color:var(--ok)">${ICN('check',30)}</div><h3>Booking Terkirim</h3><p>ID booking: <b>${d.code}</b></p><p class="lead" style="margin:8px 0 16px;font-size:.88rem">Pesanan dikirim ke WhatsApp admin. ${pay=='lokasi'?'Tunggu konfirmasi ketersediaan.':pay=='qris'?'Admin akan mengirim kode QRIS.':'Transfer ke '+esc2(SET.payment_info||'rekening admin')+' lalu kirim bukti bayar.'}</p><button class="btn" onclick="$('#ok').classList.remove('s')">Tutup</button>`;
 $('#ok').classList.add('s');sel={s:null,e:null};drawCal();sum();
 }catch(e){toast('Gagal terhubung ke server. Coba lagi.')}
 b.disabled=false;b.textContent='Kirim Booking via WhatsApp'}

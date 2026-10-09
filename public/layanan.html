@@ -6,10 +6,10 @@
 <div id="hd"></div>
 <section class="pg"><div class="ph" id="hi"></div><div class="w"><span class="eyebrow">Layanan</span><h1>Satu tempat, empat cara menikmati liburan.</h1><p>Hotel, penginapan, cottage, dan trip dengan harga transparan.</p></div></section>
 <section class="s"><div class="w" id="rows"></div></section>
-<section class="s cr"><div class="w"><div class="sh"><span class="eyebrow">Cara Booking</span><h2>Tiga langkah mudah</h2></div><div class="g3"><div class="card"><div class="ic">🗓</div><h3>1. Pilih tanggal</h3><p>Lihat ketersediaan di kalender dan pilih layanan.</p></div><div class="card"><div class="ic">💳</div><h3>2. Isi form & bayar</h3><p>Transfer DP/lunas, QRIS, atau bayar di lokasi.</p></div><div class="card"><div class="ic">💬</div><h3>3. Konfirmasi WhatsApp</h3><p>Admin mengonfirmasi pesanan Anda dengan cepat.</p></div></div></div></section>
+<section class="s cr"><div class="w"><div class="sh"><span class="eyebrow">Cara Booking</span><h2>Tiga langkah mudah</h2></div><div class="g3"><div class="card"><div class="ic" data-ic="kalender"></div><h3>1. Pilih tanggal</h3><p>Lihat ketersediaan di kalender dan pilih layanan.</p></div><div class="card"><div class="ic" data-ic="kartu"></div><h3>2. Isi form & bayar</h3><p>Transfer DP/lunas, QRIS, atau bayar di lokasi.</p></div><div class="card"><div class="ic" data-ic="chat"></div><h3>3. Konfirmasi WhatsApp</h3><p>Admin mengonfirmasi pesanan Anda dengan cepat.</p></div></div></div></section>
 <section class="cta"><span class="eyebrow" style="color:#d7ebff">Pesan Sekarang</span><h2>Siap memilih tanggal Anda?</h2><p>Amankan tanggal favorit dan terima konfirmasi cepat via WhatsApp.</p><a class="btn wt" href="booking.html">Mulai Booking</a></section>
 <div id="ft"></div>
-<script src="app.js"></script><script>
+<script src="icons.js"></script><script src="app.js"></script><script>
 layout('layanan');$('#hi').innerHTML=im('1566073771259-6a8506099945',1800);
 load().then(()=>{$('#rows').innerHTML=SV.map(s=>`<div class="row2">${img(s.image,s.name,900)}<div><span class="eyebrow">${s.tagline||s.category}</span><h2>${s.name}</h2><p class="lead">${s.description}</p><p>${s.features.map(x=>`<span class="chip">${x}</span>`).join('')}</p><p style="margin:18px 0"><b style="font-size:20px;color:var(--b)">${rp(s.price)}</b> <small>/ ${s.unit}</small></p><a class="btn" href="booking.html?svc=${s.slug}">Booking ${s.name}</a></div></div>`).join('');rv()});
 </script></body></html>
