@@ -3,6 +3,12 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+/* TiDB Cloud / MySQL.
+   - DB_SSL=true (atau host mengandung "tidbcloud") mengaktifkan TLS, wajib untuk TiDB Cloud.
+   - DB_CONN_LIMIT disarankan kecil (mis. 5) untuk lingkungan serverless seperti Vercel. */
+const useSSL = String(process.env.DB_SSL || '').toLowerCase() === 'true'
+  || /tidbcloud|tidb/i.test(process.env.DB_HOST || '');
+
 export const pool = mysql.createPool({
   host: process.env.DB_HOST || '127.0.0.1',
   port: +(process.env.DB_PORT || 3306),
@@ -10,10 +16,11 @@ export const pool = mysql.createPool({
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'db_client_balakosa_2026',
   waitForConnections: true,
-  connectionLimit: 10,
+  connectionLimit: +(process.env.DB_CONN_LIMIT || 10),
   namedPlaceholders: true,
   charset: 'utf8mb4_general_ci',
   dateStrings: true,
+  ...(useSSL ? { ssl: { minVersion: 'TLSv1.2', rejectUnauthorized: true } } : {}),
 });
 
 export async function q(sql, params = []) {
